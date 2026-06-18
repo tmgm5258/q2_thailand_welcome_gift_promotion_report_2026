@@ -409,8 +409,8 @@ tr:hover td{background:rgba(0,179,235,0.03);}
                     <div class="tooltip-list-item"><span class="tli-cite">Source</span><span class="tli-text"><a href="https://bidholdinggroup-my.sharepoint.com/:x:/r/personal/lucas_ho_tmgm_com/_layouts/15/Doc.aspx?sourcedoc=%7B37EAA587-F9C5-451B-99F2-90FF68AF92CD%7D&amp;file=TH_Welcome_Gift_MASTER_Apr_May.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank" rel="noopener">Combined master</a> &middot; sheet &lsquo;Combined master&rsquo;</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Columns</span><span class="tli-text">ftd_amount_apr (col&nbsp;T) / ftd_amount_may (col&nbsp;Z)</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">COUNT of rows where the month&rsquo;s FTD amount is greater than zero</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=COUNTIF(T:T,"&gt;0")</code></span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=COUNTIF(Z:Z,"&gt;0")</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=COUNTIFS(I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1),T:T,"&gt;0")</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=COUNTIFS(I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1),Z:Z,"&gt;0")</code></span></div>
                   </div>
                   <hr class="tooltip-divider">
                   <div class="tooltip-row"><span class="t-label">Result &middot; April</span><span class="t-val">11</span></div>
@@ -434,8 +434,8 @@ tr:hover td{background:rgba(0,179,235,0.03);}
                     <div class="tooltip-list-item"><span class="tli-cite">Source</span><span class="tli-text"><a href="https://bidholdinggroup-my.sharepoint.com/:x:/r/personal/lucas_ho_tmgm_com/_layouts/15/Doc.aspx?sourcedoc=%7B37EAA587-F9C5-451B-99F2-90FF68AF92CD%7D&amp;file=TH_Welcome_Gift_MASTER_Apr_May.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank" rel="noopener">Combined master</a> &middot; sheet &lsquo;Combined master&rsquo;</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Columns</span><span class="tli-text">ftd_amount_apr (col&nbsp;T) / ftd_amount_may (col&nbsp;Z)</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">SUM of the month&rsquo;s FTD-amount column</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUM(T:T)</code></span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUM(Z:Z)</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUMIFS(T:T,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1))</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUMIFS(Z:Z,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1))</code></span></div>
                   </div>
                   <hr class="tooltip-divider">
                   <div class="tooltip-row"><span class="t-label">Result &middot; April</span><span class="t-val">$6,465</span></div>
@@ -460,8 +460,8 @@ tr:hover td{background:rgba(0,179,235,0.03);}
                     <div class="tooltip-list-item"><span class="tli-cite">Source</span><span class="tli-text"><a href="https://bidholdinggroup-my.sharepoint.com/:x:/r/personal/lucas_ho_tmgm_com/_layouts/15/Doc.aspx?sourcedoc=%7B37EAA587-F9C5-451B-99F2-90FF68AF92CD%7D&amp;file=TH_Welcome_Gift_MASTER_Apr_May.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank" rel="noopener">Combined master</a> &middot; sheet &lsquo;Combined master&rsquo;</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Columns</span><span class="tli-text">ftd_amount (T / Z), first_deposit_time (col&nbsp;K), sign_up_time (col&nbsp;F)</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">COUNT where the month&rsquo;s FTD amount &gt; 0 AND first-deposit date is later than sign-up</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUMPRODUCT(($T$2:$T$243&gt;0)*($K$2:$K$243&gt;$F$2:$F$243))</code></span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUMPRODUCT(($Z$2:$Z$243&gt;0)*($K$2:$K$243&gt;$F$2:$F$243))</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUMPRODUCT(($I$2:$I$243="Yes")*($F$2:$F$243&lt;DATE(2026,6,1))*($T$2:$T$243&gt;0)*($K$2:$K$243&gt;$F$2:$F$243))</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUMPRODUCT(($I$2:$I$243="Yes")*($F$2:$F$243&lt;DATE(2026,6,1))*($Z$2:$Z$243&gt;0)*($K$2:$K$243&gt;$F$2:$F$243))</code></span></div>
                   </div>
                   <hr class="tooltip-divider">
                   <div class="tooltip-row"><span class="t-label">Result &middot; April</span><span class="t-val">5</span></div>
@@ -485,8 +485,8 @@ tr:hover td{background:rgba(0,179,235,0.03);}
                     <div class="tooltip-list-item"><span class="tli-cite">Source</span><span class="tli-text"><a href="https://bidholdinggroup-my.sharepoint.com/:x:/r/personal/lucas_ho_tmgm_com/_layouts/15/Doc.aspx?sourcedoc=%7B37EAA587-F9C5-451B-99F2-90FF68AF92CD%7D&amp;file=TH_Welcome_Gift_MASTER_Apr_May.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank" rel="noopener">Combined master</a> &middot; sheet &lsquo;Combined master&rsquo;</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Columns</span><span class="tli-text">ftd_amount (T / Z), first_deposit_time (col&nbsp;K), sign_up_time (col&nbsp;F)</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">SUM of the month&rsquo;s FTD amount where the first-deposit date is later than sign-up</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUMPRODUCT(($K$2:$K$243&gt;$F$2:$F$243)*$T$2:$T$243)</code></span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUMPRODUCT(($K$2:$K$243&gt;$F$2:$F$243)*$Z$2:$Z$243)</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUMPRODUCT(($I$2:$I$243="Yes")*($F$2:$F$243&lt;DATE(2026,6,1))*($K$2:$K$243&gt;$F$2:$F$243)*$T$2:$T$243)</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUMPRODUCT(($I$2:$I$243="Yes")*($F$2:$F$243&lt;DATE(2026,6,1))*($K$2:$K$243&gt;$F$2:$F$243)*$Z$2:$Z$243)</code></span></div>
                   </div>
                   <hr class="tooltip-divider">
                   <div class="tooltip-row"><span class="t-label">Result &middot; April</span><span class="t-val">$5,900</span></div>
@@ -506,22 +506,22 @@ tr:hover td{background:rgba(0,179,235,0.03);}
                   <p>A &ldquo;lot&rdquo; is the standard unit traders use to measure trade size (one standard lot is 100,000 units of the base currency). So this is the total qualifying trade volume, expressed in those units.</p>
                   <p>It is &ldquo;weighted&rdquo; because products count differently towards qualifying: forex and gold count in full, while index, oil and crypto CFDs count only a tenth, and share trades do not count at all.</p>
                   <p>Volume matters because it is one of the two things a client needs, alongside their deposit, to reach a gift tier.</p>
-                  <p><strong>This month only.</strong> 5,080 lots in April and 3,870 in May, each just that month.</p></div>
+                  <p><strong>This month only.</strong> 4,816 lots in April and 3,671 in May, each just that month.</p></div>
                   <hr class="tooltip-divider">
                   <div class="tooltip-list">
                     <div class="tooltip-list-item"><span class="tli-cite">Source</span><span class="tli-text"><a href="https://bidholdinggroup-my.sharepoint.com/:x:/r/personal/lucas_ho_tmgm_com/_layouts/15/Doc.aspx?sourcedoc=%7B37EAA587-F9C5-451B-99F2-90FF68AF92CD%7D&amp;file=TH_Welcome_Gift_MASTER_Apr_May.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank" rel="noopener">Combined master</a> &middot; sheet &lsquo;Combined master&rsquo;</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Columns</span><span class="tli-text">weighted_lots_apr (col&nbsp;U) / weighted_lots_may (col&nbsp;AA)</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">SUM of the month&rsquo;s weighted-lots column</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUM(U:U)</code></span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUM(AA:AA)</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">SUM of the month&rsquo;s weighted-lots column, counting only the 237 participants in this report</span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUMIFS(U:U,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1))</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUMIFS(AA:AA,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1))</code></span></div>
                   </div>
                   <hr class="tooltip-divider">
-                  <div class="tooltip-row"><span class="t-label">Result &middot; April</span><span class="t-val">5,080</span></div>
-                  <div class="tooltip-row"><span class="t-label">Result &middot; May</span><span class="t-val">3,870</span></div>
+                  <div class="tooltip-row"><span class="t-label">Result &middot; April</span><span class="t-val">4,816</span></div>
+                  <div class="tooltip-row"><span class="t-label">Result &middot; May</span><span class="t-val">3,671</span></div>
                 </div>
               </td>
-              <td class="td-right">5,080</td>
-              <td class="td-right">3,870</td>
+              <td class="td-right">4,816</td>
+              <td class="td-right">3,671</td>
               <td class="td-right v-empty">&mdash;</td>
             </tr>
 
@@ -532,23 +532,23 @@ tr:hover td{background:rgba(0,179,235,0.03);}
                   <div class="tooltip-prose"><p>The same qualifying trading volume as above, but expressed in US dollars: the total face value of all the positions traded.</p>
                   <p>This is <strong>notional turnover</strong>, not money deposited and not profit. It looks enormous (billions) for two reasons: trading uses leverage, so a small deposit can control a much larger position, and the same money is traded over and over.</p>
                   <p>A simple way to picture it: if you trade the same $1,000 ten times, that is $10,000 of &ldquo;turnover&rdquo; even though only $1,000 ever existed, and leverage stretches it further still. So read this as a measure of trading activity, not cash.</p>
-                  <p><strong>This month only.</strong> About $3.94 billion in April and $3.27 billion in May. See the note in the Data Quality section (&dagger;).</p></div>
+                  <p><strong>This month only.</strong> About $3.80 billion in April and $3.12 billion in May. See the note in the Data Quality section (&dagger;).</p></div>
                   <hr class="tooltip-divider">
                   <div class="tooltip-list">
                     <div class="tooltip-list-item"><span class="tli-cite">Source</span><span class="tli-text"><a href="https://bidholdinggroup-my.sharepoint.com/:x:/r/personal/lucas_ho_tmgm_com/_layouts/15/Doc.aspx?sourcedoc=%7B37EAA587-F9C5-451B-99F2-90FF68AF92CD%7D&amp;file=TH_Welcome_Gift_MASTER_Apr_May.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank" rel="noopener">Combined master</a> &middot; sheet &lsquo;Combined master&rsquo;</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Columns</span><span class="tli-text">trade_vol_usd_apr (col&nbsp;V) / trade_vol_usd_may (col&nbsp;AB)</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">SUM of the month&rsquo;s USD-volume column</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUM(V:V)</code></span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUM(AB:AB)</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">SUM of the month&rsquo;s USD-volume column, counting only the 237 participants in this report</span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUMIFS(V:V,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1))</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUMIFS(AB:AB,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1))</code></span></div>
                   </div>
                   <hr class="tooltip-divider">
-                  <div class="tooltip-row"><span class="t-label">Result &middot; April</span><span class="t-val">$3,943,561,223</span></div>
-                  <div class="tooltip-row"><span class="t-label">Result &middot; May</span><span class="t-val">$3,268,389,172</span></div>
+                  <div class="tooltip-row"><span class="t-label">Result &middot; April</span><span class="t-val">$3,796,637,752</span></div>
+                  <div class="tooltip-row"><span class="t-label">Result &middot; May</span><span class="t-val">$3,115,566,919</span></div>
                   <div class="tooltip-note">This is the total size of all trades placed, not money deposited, and a few very active accounts drive most of it. See the note in the Data Quality section.</div>
                 </div>
               </td>
-              <td class="td-right">$3,943,561,223</td>
-              <td class="td-right">$3,268,389,172</td>
+              <td class="td-right">$3,796,637,752</td>
+              <td class="td-right">$3,115,566,919</td>
               <td class="td-right v-empty">&mdash;</td>
             </tr>
 
@@ -564,8 +564,8 @@ tr:hover td{background:rgba(0,179,235,0.03);}
                     <div class="tooltip-list-item"><span class="tli-cite">Source</span><span class="tli-text"><a href="https://bidholdinggroup-my.sharepoint.com/:x:/r/personal/lucas_ho_tmgm_com/_layouts/15/Doc.aspx?sourcedoc=%7B37EAA587-F9C5-451B-99F2-90FF68AF92CD%7D&amp;file=TH_Welcome_Gift_MASTER_Apr_May.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank" rel="noopener">Combined master</a> &middot; sheet &lsquo;Combined master&rsquo;</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Columns</span><span class="tli-text">weighted_lots (U / AA) &amp; new_existing_24h (col&nbsp;J)</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">SUM of weighted lots where new_existing_24h = &ldquo;new&rdquo;</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUMIFS(U:U,J:J,"new")</code></span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUMIFS(AA:AA,J:J,"new")</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUMIFS(U:U,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1),J:J,"new")</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUMIFS(AA:AA,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1),J:J,"new")</code></span></div>
                   </div>
                   <hr class="tooltip-divider">
                   <div class="tooltip-row"><span class="t-label">Result &middot; April</span><span class="t-val">9</span></div>
@@ -589,8 +589,8 @@ tr:hover td{background:rgba(0,179,235,0.03);}
                     <div class="tooltip-list-item"><span class="tli-cite">Source</span><span class="tli-text"><a href="https://bidholdinggroup-my.sharepoint.com/:x:/r/personal/lucas_ho_tmgm_com/_layouts/15/Doc.aspx?sourcedoc=%7B37EAA587-F9C5-451B-99F2-90FF68AF92CD%7D&amp;file=TH_Welcome_Gift_MASTER_Apr_May.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank" rel="noopener">Combined master</a> &middot; sheet &lsquo;Combined master&rsquo;</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Columns</span><span class="tli-text">trade_vol_usd (V / AB) &amp; new_existing_24h (col&nbsp;J)</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">SUM of USD volume where new_existing_24h = &ldquo;new&rdquo;</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUMIFS(V:V,J:J,"new")</code></span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUMIFS(AB:AB,J:J,"new")</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUMIFS(V:V,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1),J:J,"new")</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUMIFS(AB:AB,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1),J:J,"new")</code></span></div>
                   </div>
                   <hr class="tooltip-divider">
                   <div class="tooltip-row"><span class="t-label">Result &middot; April</span><span class="t-val">$10,986,471</span></div>
@@ -616,8 +616,8 @@ tr:hover td{background:rgba(0,179,235,0.03);}
                     <div class="tooltip-list-item"><span class="tli-cite">Source</span><span class="tli-text"><a href="https://bidholdinggroup-my.sharepoint.com/:x:/r/personal/lucas_ho_tmgm_com/_layouts/15/Doc.aspx?sourcedoc=%7B37EAA587-F9C5-451B-99F2-90FF68AF92CD%7D&amp;file=TH_Welcome_Gift_MASTER_Apr_May.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank" rel="noopener">Combined master</a> &middot; sheet &lsquo;Combined master&rsquo; &middot; tier costs confirmed by Operations</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Columns</span><span class="tli-text">cost_redeemed_usd (col&nbsp;AK) &amp; redemption_time (col&nbsp;AJ)</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">SUM of cost_redeemed_usd for gifts whose redemption_time falls in the month</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUMIFS(AK:AK,AJ:AJ,"&gt;="&amp;DATE(2026,4,1),AJ:AJ,"&lt;"&amp;DATE(2026,5,1))</code></span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUMIFS(AK:AK,AJ:AJ,"&gt;="&amp;DATE(2026,5,1),AJ:AJ,"&lt;"&amp;DATE(2026,6,1))</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUMIFS(AK:AK,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1),AJ:AJ,"&gt;="&amp;DATE(2026,4,1),AJ:AJ,"&lt;"&amp;DATE(2026,5,1))</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUMIFS(AK:AK,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1),AJ:AJ,"&gt;="&amp;DATE(2026,5,1),AJ:AJ,"&lt;"&amp;DATE(2026,6,1))</code></span></div>
                   </div>
                   <hr class="tooltip-divider">
                   <div class="tooltip-row"><span class="t-label">April &middot; tiers redeemed</span><span class="t-val">2&times;A, 8&times;C</span></div>
@@ -696,8 +696,8 @@ tr:hover td{background:rgba(0,179,235,0.03);}
                     <div class="tooltip-list-item"><span class="tli-cite">Source</span><span class="tli-text"><a href="https://bidholdinggroup-my.sharepoint.com/:x:/r/personal/lucas_ho_tmgm_com/_layouts/15/Doc.aspx?sourcedoc=%7B37EAA587-F9C5-451B-99F2-90FF68AF92CD%7D&amp;file=TH_Welcome_Gift_MASTER_Apr_May.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank" rel="noopener">Combined master</a> &middot; sheet &lsquo;Combined master&rsquo;</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Columns</span><span class="tli-text">ftd_amount_apr (col&nbsp;T) / ftd_amount_may (col&nbsp;Z)</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">COUNT of rows where the month&rsquo;s FTD amount is greater than zero</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=COUNTIF(T:T,"&gt;0")</code></span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=COUNTIF(Z:Z,"&gt;0")</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=COUNTIFS(I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1),T:T,"&gt;0")</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=COUNTIFS(I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1),Z:Z,"&gt;0")</code></span></div>
                   </div>
                   <hr class="tooltip-divider">
                   <div class="tooltip-row"><span class="t-label">Result &middot; April</span><span class="t-val">11</span></div>
@@ -722,8 +722,8 @@ tr:hover td{background:rgba(0,179,235,0.03);}
                     <div class="tooltip-list-item"><span class="tli-cite">Source</span><span class="tli-text"><a href="https://bidholdinggroup-my.sharepoint.com/:x:/r/personal/lucas_ho_tmgm_com/_layouts/15/Doc.aspx?sourcedoc=%7B37EAA587-F9C5-451B-99F2-90FF68AF92CD%7D&amp;file=TH_Welcome_Gift_MASTER_Apr_May.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank" rel="noopener">Combined master</a> &middot; sheet &lsquo;Combined master&rsquo;</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Columns</span><span class="tli-text">ftd_amount_apr (col&nbsp;T) / ftd_amount_may (col&nbsp;Z)</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">SUM of the month&rsquo;s FTD-amount column</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUM(T:T)</code></span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUM(Z:Z)</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUMIFS(T:T,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1))</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUMIFS(Z:Z,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1))</code></span></div>
                   </div>
                   <hr class="tooltip-divider">
                   <div class="tooltip-row"><span class="t-label">Result &middot; April</span><span class="t-val">$6,465</span></div>
@@ -741,24 +741,24 @@ tr:hover td{background:rgba(0,179,235,0.03);}
                   <div class="tooltip-title">Gross Deposit</div>
                   <div class="tooltip-prose"><p>The total amount of money paid in (deposited) during the month, added up across every participant, <strong>before</strong> any withdrawals are subtracted. It is the gross, or raw, inflow of cash.</p>
                   <p>Unlike FTD Amount, this is not limited to first deposits. It counts <em>every</em> deposit made in the month: first-time deposits, repeat top-ups, and deposits from clients who had funded long before, all of it, from new and existing clients alike. Think of it as everything that came in the front door, no matter who sent it or what later went back out.</p>
-                  <p>That is why it dwarfs FTD Amount. In April, first-ever deposits were only $6,465, yet Gross Deposit was $693,162, so the vast bulk of the money in was top-ups and deposits from people who had already funded before, not brand-new depositors.</p>
+                  <p>That is why it dwarfs FTD Amount. In April, first-ever deposits were only $6,465, yet Gross Deposit was $673,336, so the vast bulk of the money in was top-ups and deposits from people who had already funded before, not brand-new depositors.</p>
                   <p>It is measured <strong>before</strong> withdrawals. Net Deposit (the next row) takes this same money and subtracts what clients pulled back out, which is why Net comes out much smaller.</p>
-                  <p><strong>This month only.</strong> $693,162 in April and $806,412 in May each cover just that month&rsquo;s deposits, not a running total.</p></div>
+                  <p><strong>This month only.</strong> $673,336 in April and $777,437 in May each cover just that month&rsquo;s deposits, not a running total.</p></div>
                   <hr class="tooltip-divider">
                   <div class="tooltip-list">
                     <div class="tooltip-list-item"><span class="tli-cite">Source</span><span class="tli-text"><a href="https://bidholdinggroup-my.sharepoint.com/:x:/r/personal/lucas_ho_tmgm_com/_layouts/15/Doc.aspx?sourcedoc=%7B37EAA587-F9C5-451B-99F2-90FF68AF92CD%7D&amp;file=TH_Welcome_Gift_MASTER_Apr_May.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank" rel="noopener">Combined master</a> &middot; sheet &lsquo;Combined master&rsquo;</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Columns</span><span class="tli-text">deposit_apr (col&nbsp;Q) / deposit_may (col&nbsp;W)</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">SUM of the month&rsquo;s gross-deposit column</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUM(Q:Q)</code></span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUM(W:W)</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">SUM of the month&rsquo;s gross-deposit column, counting only the 237 participants in this report</span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUMIFS(Q:Q,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1))</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUMIFS(W:W,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1))</code></span></div>
                   </div>
                   <hr class="tooltip-divider">
-                  <div class="tooltip-row"><span class="t-label">Result &middot; April</span><span class="t-val">$693,162</span></div>
-                  <div class="tooltip-row"><span class="t-label">Result &middot; May</span><span class="t-val">$806,412</span></div>
+                  <div class="tooltip-row"><span class="t-label">Result &middot; April</span><span class="t-val">$673,336</span></div>
+                  <div class="tooltip-row"><span class="t-label">Result &middot; May</span><span class="t-val">$777,437</span></div>
                 </div>
               </td>
-              <td class="td-right">$693,162</td>
-              <td class="td-right">$806,412</td>
+              <td class="td-right">$673,336</td>
+              <td class="td-right">$777,437</td>
               <td class="td-right v-empty">&mdash;</td>
             </tr>
 
@@ -768,24 +768,24 @@ tr:hover td{background:rgba(0,179,235,0.03);}
                   <div class="tooltip-title">Net Deposit</div>
                   <div class="tooltip-prose"><p>Money paid in <strong>minus</strong> money withdrawn during the month. It is what actually stayed with TMGM once clients&rsquo; withdrawals are netted off, the real net change in client funds for the month.</p>
                   <p>It is simply Gross Deposit minus withdrawals. Gross is everything that came in the front door; Net subtracts everything that went back out the same month, leaving what genuinely remained.</p>
-                  <p>Withdrawals were heavy, so the two sit far apart. In April, $693,162 came in but about $533,302 was pulled back out (roughly 77%), leaving just $159,860 net. May was similar: $806,412 in, about $582,079 out, leaving $224,333.</p>
-                  <p>So Net is the more realistic measure of what the business actually held onto from clients. Some of these withdrawals came from clients taking funds out soon after reaching the deposit level needed for a gift, which the redemption_review flags in the master trace and the Notes section covers.</p>
-                  <p><strong>This month only.</strong> $159,860 in April and $224,333 in May each cover just that month, not a running total.</p></div>
+                  <p>Withdrawals were heavy, so the two sit far apart. In April, $673,336 came in but about $508,248 was pulled back out (roughly 75%), leaving just $165,088 net. May was similar: $777,437 in, about $577,079 out, leaving $200,358.</p>
+                  <p>So Net is the more realistic measure of what the business actually held onto from clients. Some of these withdrawals came from clients taking funds out soon after reaching the deposit level needed for a gift, which the redemption_review flags in the master trace and the Findings section covers.</p>
+                  <p><strong>This month only.</strong> $165,088 in April and $200,358 in May each cover just that month, not a running total.</p></div>
                   <hr class="tooltip-divider">
                   <div class="tooltip-list">
                     <div class="tooltip-list-item"><span class="tli-cite">Source</span><span class="tli-text"><a href="https://bidholdinggroup-my.sharepoint.com/:x:/r/personal/lucas_ho_tmgm_com/_layouts/15/Doc.aspx?sourcedoc=%7B37EAA587-F9C5-451B-99F2-90FF68AF92CD%7D&amp;file=TH_Welcome_Gift_MASTER_Apr_May.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank" rel="noopener">Combined master</a> &middot; sheet &lsquo;Combined master&rsquo;</span></div>
                     <div class="tooltip-list-item"><span class="tli-cite">Columns</span><span class="tli-text">net_deposit_apr (col&nbsp;S) / net_deposit_may (col&nbsp;Y)</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">SUM of the month&rsquo;s net-deposit column (deposits &minus; withdrawals)</span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUM(S:S)</code></span></div>
-                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUM(Y:Y)</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">SUM of the month&rsquo;s net-deposit column (deposits &minus; withdrawals), counting only the 237 participants in this report</span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">Apr</span><span class="tli-text"><code>=SUMIFS(S:S,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1))</code></span></div>
+                    <div class="tooltip-list-item"><span class="tli-cite">May</span><span class="tli-text"><code>=SUMIFS(Y:Y,I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1))</code></span></div>
                   </div>
                   <hr class="tooltip-divider">
-                  <div class="tooltip-row"><span class="t-label">Result &middot; April</span><span class="t-val">$159,860</span></div>
-                  <div class="tooltip-row"><span class="t-label">Result &middot; May</span><span class="t-val">$224,333</span></div>
+                  <div class="tooltip-row"><span class="t-label">Result &middot; April</span><span class="t-val">$165,088</span></div>
+                  <div class="tooltip-row"><span class="t-label">Result &middot; May</span><span class="t-val">$200,358</span></div>
                 </div>
               </td>
-              <td class="td-right">$159,860</td>
-              <td class="td-right">$224,333</td>
+              <td class="td-right">$165,088</td>
+              <td class="td-right">$200,358</td>
               <td class="td-right v-empty">&mdash;</td>
             </tr>
 
@@ -1535,7 +1535,7 @@ tr:hover td{background:rgba(0,179,235,0.03);}
             <div class="tooltip-list-item"><span class="tli-cite">Source</span><span class="tli-text"><a href="https://bidholdinggroup-my.sharepoint.com/:x:/r/personal/lucas_ho_tmgm_com/_layouts/15/Doc.aspx?sourcedoc=%7B37EAA587-F9C5-451B-99F2-90FF68AF92CD%7D&amp;file=TH_Welcome_Gift_MASTER_Apr_May.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank" rel="noopener">Combined master</a> &middot; sheet &lsquo;Combined master&rsquo;</span></div>
             <div class="tooltip-list-item"><span class="tli-cite">Columns</span><span class="tli-text">dup_group (col&nbsp;L), dup_status (col&nbsp;M), count_as_participant (col&nbsp;N), kyc_note (col&nbsp;O) &amp; gift_action (col&nbsp;P)</span></div>
             <div class="tooltip-list-item"><span class="tli-cite">Logic</span><span class="tli-text">Match records that share the same national ID, keep one as the main record, and mark the rest as duplicates that are not counted</span></div>
-            <div class="tooltip-list-item"><span class="tli-cite">Duplicate records</span><span class="tli-text"><code>=COUNTIF(M:M,"*duplicate*")</code></span></div>
+            <div class="tooltip-list-item"><span class="tli-cite">Duplicate records</span><span class="tli-text"><code>=COUNTIFS(I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1),M:M,"*duplicate*")</code></span></div>
             <div class="tooltip-list-item"><span class="tli-cite">Unique participants</span><span class="tli-text"><code>=COUNTIFS(I:I,"Yes",F:F,"&lt;"&amp;DATE(2026,6,1),N:N,1)</code></span></div>
             <div class="tooltip-list-item"><span class="tli-cite">Gift to reverse</span><span class="tli-text"><code>=COUNTIF(P:P,"*Reverse*")</code></span></div>
           </div>
@@ -1603,12 +1603,12 @@ tr:hover td{background:rgba(0,179,235,0.03);}
           <div class="dq-people">
             <div class="dq-people-title">The 6 people, and where to find each one in all three files</div>
           <div class="dq-person">
-            <div class="dq-person-head"><span class="dq-pname">Chakkaphong Ratanaphit</span><span class="dq-pid">user_id 878002</span></div>
+            <div class="dq-person-head"><span class="dq-pname">Chakkaphong Ratanaphithak</span><span class="dq-pid">user_id 878002</span></div>
             <div class="dq-rows"><span class="dq-rowchip">CRM file &amp; data file: row 29</span><span class="dq-rowchip">combined master: row 11</span></div>
             <div class="dq-says"><strong>CRM file</strong> shows 1 coupon redeemed (status &ldquo;Finish&rdquo;), but the <strong>data file</strong> shows the coupon was never actually used. So the CRM file says a gift went out while the data file says it did not. Needs checking.</div>
           </div>
           <div class="dq-person">
-            <div class="dq-person-head"><span class="dq-pname">Thanakorn Mungprasongt</span><span class="dq-pid">user_id 433305</span></div>
+            <div class="dq-person-head"><span class="dq-pname">Thanakorn Mungprasongthana</span><span class="dq-pid">user_id 433305</span></div>
             <div class="dq-rows"><span class="dq-rowchip">CRM file &amp; data file: row 137</span><span class="dq-rowchip">combined master: row 47</span></div>
             <div class="dq-says"><strong>CRM file</strong> shows 1 coupon redeemed (status &ldquo;Finish&rdquo;), but the <strong>data file</strong> shows the coupon was never actually used. Same situation as the one above: needs checking.</div>
           </div>
